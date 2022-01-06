@@ -93,9 +93,9 @@ class fetch_from_s3(Resource):
                         os.remove(file_path)  
                         os.remove(OUTPUT_AUDIO_FILE)
 
-                    except:
+                    except Exception as e:
 
-                        pass 
+                        print(e)
                 
                 else:
 
