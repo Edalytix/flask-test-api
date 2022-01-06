@@ -165,7 +165,7 @@ class fetch_from_s3(Resource):
                 video_content=csv_file['response'].tolist()
                 
 
-        #print(video_content) 
+        print(len(video_content)) 
 
         summary=get_summary(video_content)
         #return jsonify({"Message":"Got csv file"})
