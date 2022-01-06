@@ -105,7 +105,7 @@ class fetch_from_s3(Resource):
 
                 if object_list[0] not in audio_files_list:
 
-                    try:
+                    
 
                     
                         file_path="C:\\Users\\Admin\\Desktop\\Survideo"
@@ -146,9 +146,7 @@ class fetch_from_s3(Resource):
                             os.remove(file_path)
                             os.remove(output_file)
 
-                    except Exception as e:
-
-                        print(e)
+                
 
                 else:
 
