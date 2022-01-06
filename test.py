@@ -76,7 +76,8 @@ class fetch_from_s3(Resource):
                         if os.path.exists(OUTPUT_AUDIO_FILE)==True:
 
                             os.remove(OUTPUT_AUDIO_FILE)
-
+                        
+                        print("Downloading.....")
                         s3_bucket.download_file(obj_path,file_path)
                         video_clip = me.VideoFileClip(r"{}".format(file_path))
                         video_clip.audio.write_audiofile(r"{}".format(OUTPUT_AUDIO_FILE))
