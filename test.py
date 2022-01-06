@@ -128,7 +128,7 @@ class fetch_from_s3(Resource):
 
                         if object_list[-1]=='mp3':
                             
-                            
+                            print("Converting....")
                             output_file="C:\\Users\\Admin\\Desktop\\Survideo"+"\\"+object_list[0]+".wav"
                             #print(file_path)
                             #print(output_file)
