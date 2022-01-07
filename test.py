@@ -71,7 +71,7 @@ class fetch_from_s3(Resource):
 
                             os.remove(file_path)
                         
-                        OUTPUT_AUDIO_FILE = "C:\\Users\\Admin\\Desktop\\Survideo\\converted.wav"
+                        OUTPUT_AUDIO_FILE = "converted.wav"
                         if os.path.exists(OUTPUT_AUDIO_FILE)==True:
 
                             os.remove(OUTPUT_AUDIO_FILE)
