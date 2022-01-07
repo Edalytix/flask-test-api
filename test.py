@@ -20,7 +20,7 @@ def hello_world():
     return "This API generates a CSV file of responses"
 
 class fetch_from_s3(Resource):
-    def get(self,bucket_name,response_folder,survey_id,question_id):
+    def get(self,bucket_name,survey_id,question_id):
 
         s3_client=boto3.client(
                 service_name='s3',
@@ -40,7 +40,7 @@ class fetch_from_s3(Resource):
             
         video_content=[]
         video_files_list=[]
-        folder_s3_path=response_folder+"/"+survey_id+"/"+question_id+"/"
+        folder_s3_path="responses"+"/"+survey_id+"/"+question_id+"/"
         audio_files_list=[]
         s3_bucket=s3_resource.Bucket(bucket_name)
         response_from_s3 = s3_client.list_objects(Bucket=bucket_name, Prefix=folder_s3_path)
@@ -311,7 +311,7 @@ def get_summary(survey_list):
 
     return summary
 
-api.add_resource(fetch_from_s3, "/fetch_data/<string:bucket_name>/<string:response_folder>/<string:survey_id>/<string:question_id>")
+api.add_resource(fetch_from_s3, "/fetch_data/<string:bucket_name>/<string:survey_id>/<string:question_id>")
 
 if __name__=="__main__":
 
