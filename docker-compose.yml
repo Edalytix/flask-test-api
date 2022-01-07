@@ -1,0 +1,17 @@
+version: "3.9"
+
+networks:
+  web:
+    external: true
+
+services:
+  app:
+    build:
+      context: .
+    labels:
+      - traefik.http.routers.python-api.rule=Host(`python-api.edalytics.com`)
+      - traefik.http.routers.python-api.tls=true
+      - traefik.http.routers.python-api.tls.certresolver=lets-encrypt
+      - traefik.port=5000
+    networks:
+      - web
