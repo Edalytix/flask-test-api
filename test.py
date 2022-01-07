@@ -86,6 +86,7 @@ class fetch_from_s3(Resource):
                             audio_file = recognizer.record(source,duration=video_clip.duration)
                             #print("Please wait ...")
                             result = recognizer.recognize_google(audio_file)
+                            print(result)
                         video_content.append(result)
                         video_files_list.append(object_list[0])
                         
