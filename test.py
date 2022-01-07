@@ -130,7 +130,7 @@ class fetch_from_s3(Resource):
                             print("Converting....")
                             output_file="C:\\Users\\Admin\\Downloads\\"+object_list[0]+".wav"
                             #print(file_path)
-                            #print(output_file)
+                            print(output_file)
                             sound = AudioSegment.from_mp3(file_path)
                             sound.export(output_file, format="wav")
                             r = sr.Recognizer()
