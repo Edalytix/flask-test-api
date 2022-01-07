@@ -66,8 +66,7 @@ class fetch_from_s3(Resource):
                 
                     try:
                     
-                        file_path="C:\\Users\\Admin\\Desktop\\Survideo"
-                        file_path=file_path+"\\"+s3_obj
+                        file_path=s3_obj
                         if os.path.exists(file_path)==True:
 
                             os.remove(file_path)
@@ -80,7 +79,6 @@ class fetch_from_s3(Resource):
                         print("Downloading.....")
                         s3_bucket.download_file(obj_path,file_path)
                         video_clip = me.VideoFileClip(r"{}".format(file_path))
-                        video_clip.set_duration(120)
                         video_clip.audio.write_audiofile(r"{}".format(OUTPUT_AUDIO_FILE))
                         recognizer =  sr.Recognizer()
                         audio_clip = sr.AudioFile("{}".format(OUTPUT_AUDIO_FILE))
