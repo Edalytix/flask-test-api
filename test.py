@@ -249,6 +249,10 @@ def get_summary(survey_list):
     print(word_count)
 
     value_word_counts=word_count.values()
+    if isinstance(value_word_counts,type(None)):
+        
+        return ""
+    
     max_value=max(value_word_counts)
 
     #print(max_value)
