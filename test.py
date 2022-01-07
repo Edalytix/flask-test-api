@@ -249,7 +249,7 @@ def get_summary(survey_list):
     print(word_count)
 
     value_word_counts=word_count.values()
-    if isinstance(value_word_counts,type(None)):
+    if len(value_word_counts)==0:
         
         return ""
     
