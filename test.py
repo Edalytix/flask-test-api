@@ -24,15 +24,15 @@ class fetch_from_s3(Resource):
 
         s3_client=boto3.client(
                 service_name='s3',
-                aws_access_key_id='AKIAUOIG2GGCBPNM2NPH',
-                aws_secret_access_key='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' 
+                aws_access_key_id='edalyticsminio',
+                aws_secret_access_key='edalyticsminio#1215' 
             )
 
         s3_resource=boto3.resource(
 
                 service_name='s3',
-                aws_access_key_id='AKIAUOIG2GGCBPNM2NPH',
-                aws_secret_access_key='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'
+                aws_access_key_id='edalyticsminio',
+                aws_secret_access_key='edalyticsminio#1215'
         )
 
             
