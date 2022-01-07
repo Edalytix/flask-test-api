@@ -20,27 +20,25 @@ def hello_world():
     return "This API generates a CSV file of responses"
 
 class fetch_from_s3(Resource):
-    def get(self,bucket_name,response_folder,survey_id,question_id):
+    def get(self,bucket_name,survey_id,question_id):
 
         s3_client=boto3.client(
                 service_name='s3',
-                region_name='us-east-1',
-                aws_access_key_id='AKIAUOIG2GGCBPNM2NPH',
-                aws_secret_access_key='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' 
+                aws_access_key_id='edalyticsminio',
+                aws_secret_access_key='edalyticsminio#1215' 
             )
 
         s3_resource=boto3.resource(
 
                 service_name='s3',
-                region_name='us-east-1',
-                aws_access_key_id='AKIAUOIG2GGCBPNM2NPH',
-                aws_secret_access_key='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'
+                aws_access_key_id='edalyticsminio',
+                aws_secret_access_key='edalyticsminio#1215'
         )
 
             
         video_content=[]
         video_files_list=[]
-        folder_s3_path=response_folder+"/"+survey_id+"/"+question_id+"/"
+        folder_s3_path="responses"+"/"+survey_id+"/"+question_id+"/"
         audio_files_list=[]
         s3_bucket=s3_resource.Bucket(bucket_name)
         response_from_s3 = s3_client.list_objects(Bucket=bucket_name, Prefix=folder_s3_path)
@@ -108,7 +106,7 @@ class fetch_from_s3(Resource):
 
                     try:
 
-                        file_path="C:\\Users\\Admin\\Downloads"+s3_obj
+                        file_path=s3_obj
                         s3_bucket.download_file(obj_path,file_path)
 
                         if object_list[-1]=='wav':
@@ -128,7 +126,7 @@ class fetch_from_s3(Resource):
                         if object_list[-1]=='mp3':
                             
                             print("Converting....")
-                            output_file="C:\\Users\\Admin\\Downloads\\"+object_list[0]+".wav"
+                            output_file=object_list[0]+".wav"
                             #print(file_path)
                             print(output_file)
                             sound = AudioSegment.from_mp3(file_path)
@@ -311,7 +309,7 @@ def get_summary(survey_list):
 
     return summary
 
-api.add_resource(fetch_from_s3, "/fetch_data/<string:bucket_name>/<string:response_folder>/<string:survey_id>/<string:question_id>")
+api.add_resource(fetch_from_s3, "/fetch_data/<string:bucket_name>/<string:survey_id>/<string:question_id>")
 
 if __name__=="__main__":
 
