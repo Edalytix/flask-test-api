@@ -107,9 +107,7 @@ class fetch_from_s3(Resource):
 
                     try:
 
-                    
-                        file_path="C:\\Users\\Admin\\Desktop\\Survideo"
-                        file_path=file_path+"\\"+s3_obj
+                        file_path=s3_obj
                         s3_bucket.download_file(obj_path,file_path)
 
                         if object_list[-1]=='wav':
@@ -129,7 +127,7 @@ class fetch_from_s3(Resource):
                         if object_list[-1]=='mp3':
                             
                             print("Converting....")
-                            output_file="C:\\Users\\Admin\\Desktop\\Survideo"+"\\"+object_list[0]+".wav"
+                            output_file=object_list[0]+".wav"
                             #print(file_path)
                             #print(output_file)
                             sound = AudioSegment.from_mp3(file_path)
